@@ -9,6 +9,9 @@ var imagemin = require('gulp-imagemin');
 var cache = require('gulp-cache');
 var del = require('del');
 var runSequence = require('run-sequence');
+var postcss = require('gulp-postcss');
+var sourcemaps = require('gulp-sourcemaps');
+var autoprefixer = require('autoprefixer');
 
 gulp.task('browserSync', function(){
   browserSync.init({
@@ -16,6 +19,14 @@ gulp.task('browserSync', function(){
       baseDir: 'public'
     }
   })
+});
+
+gulp.task('autoprefixer', function(){
+  return gulp.src('public/css/**/*.css')
+    .pipe(sourcemaps.init())
+    .pipe(postcss([ autoprefixer()]))
+    .pipe(sourcemaps.write('.'))
+    .pipe(gulp.dest('public/css'))
 });
 
 gulp.task('sass', function(){
@@ -59,7 +70,7 @@ gulp.task('watch', ['browserSync', 'sass'], function(){
 });
 
 gulp.task('default', function(callback){
-  runSequence(['sass', 'browserSync', 'watch'], callback)
+  runSequence(['autoprefixer', 'sass', 'browserSync', 'watch'], callback)
 });
 
 gulp.task('build', function(callback){

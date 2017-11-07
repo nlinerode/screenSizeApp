@@ -5,7 +5,7 @@
 @media screen and (min-width: 300px) {
   body {
     background-color: #b23300;
-    -js-display: flex;
+    /* -js-display: flex; */
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
@@ -50,7 +50,7 @@
     -webkit-box-shadow: 3px 4px 2px 1px rgba(0, 0, 0, 0.7);
             box-shadow: 3px 4px 2px 1px rgba(0, 0, 0, 0.7);
     height: 115vh;
-    -js-display: flex;
+    /* -js-display: flex; */
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
@@ -108,7 +108,7 @@
 @media screen and (min-width: 768px) {
   body {
     background-color: #b23300;
-    -js-display: flex;
+    /* -js-display: flex; */
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;

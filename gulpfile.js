@@ -18,7 +18,7 @@ gulp.task('browserSync', function(){
     server: {
       baseDir: 'public'
     }
-  })
+  });
 });
 
 gulp.task('autoprefixer', function(){
@@ -26,7 +26,7 @@ gulp.task('autoprefixer', function(){
     .pipe(sourcemaps.init())
     .pipe(postcss([ autoprefixer()]))
     .pipe(sourcemaps.write('.'))
-    .pipe(gulp.dest('public/css'))
+    .pipe(gulp.dest('public/css'));
 });
 
 gulp.task('sass', function(){
@@ -35,7 +35,7 @@ gulp.task('sass', function(){
     .pipe(gulp.dest('public/css'))
     .pipe(browserSync.reload({
       stream:true
-    }))
+    }));
 });
 
 gulp.task('useref', function(){
@@ -43,7 +43,7 @@ gulp.task('useref', function(){
     .pipe(useref())
     .pipe(gulpIf('*.js', uglify()))
     .pipe(gulpIf('*.css', cssnano()))
-    .pipe(gulp.dest('dist'))
+    .pipe(gulp.dest('dist'));
 });
 
 gulp.task('images', function(){
@@ -51,7 +51,7 @@ gulp.task('images', function(){
     .pipe(cache(imagemin({
       interlaced: true
     })))
-    .pipe(gulp.dest('dist/images'))
+    .pipe(gulp.dest('dist/images'));
 });
 
 // gulp.task('fonts', function(){
@@ -70,9 +70,9 @@ gulp.task('watch', ['browserSync', 'sass'], function(){
 });
 
 gulp.task('default', function(callback){
-  runSequence(['autoprefixer', 'sass', 'browserSync', 'watch'], callback)
+  runSequence(['autoprefixer', 'sass', 'browserSync', 'watch'], callback);
 });
 
 gulp.task('build', function(callback){
-  runSequence('clean:dist', ['sass', 'useref', 'images'], callback)
+  runSequence('clean:dist', ['sass', 'useref', 'images'], callback);
 });
